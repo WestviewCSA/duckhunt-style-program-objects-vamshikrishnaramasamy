@@ -8,7 +8,6 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.Timer;
@@ -16,14 +15,20 @@ import javax.swing.Timer;
 public class Frame extends JPanel implements ActionListener, MouseListener, KeyListener {
 	
 	//frame size
-	private int screenWidth = 900, screenHeight = 600;
-	private String title = "Duck Hunt";
+	private int screenWidth = 700, screenHeight = 600;
+	private String title = "Pacman Hunt";
 	
+	private int pacmanX;
+	private int pacmanY;
+	private int pacmanVX=2;
+	private int pacmanVY=2;
 	
 	/**
 	 * Declare and instantiate (create) your objects here
 	 */
 	private Duck duckObject = new Duck();
+	private Pacman pacman = new Pacman(pacmanX,pacmanY,1,1,pacmanVX,pacmanVY);
+	private Background myBackground = new Background();
 	
 	public void paint(Graphics pen) {
 		
@@ -33,7 +38,10 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		//call paint for the object
 		//for objects, you call methods on them using the dot operator
 		//methods use always involve parenthesis
+		
+		myBackground.paint(pen);
 		duckObject.paint(pen);
+		pacman.paint(pen);
 		
 		
 		
@@ -78,7 +86,9 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	public void keyPressed(KeyEvent key) {
 		
 		System.out.println("from keyPressed method:"+key.getKeyCode());
-		
+		if(key.getKeyCode()==68 || key.getKeyCode()==39) {
+			
+		}
 	}
 
 	/*
